@@ -1,0 +1,95 @@
+user id,movie id,Rating,movie title,genero
+944,27,2,Bad Boys (1995),Accion
+944,233,4,Under Siege (1992),Accion
+944,263,2,Steel (1997),Accion
+944,363,1,Sudden Death (1995),Accion
+944,397,1,Striking Distance (1993),Accion
+944,455,5,Jackie Chan's First Strike (1996),Accion
+944,540,2,Money Train (1995),Accion
+944,586,3,Terminal Velocity (1994),Accion
+944,599,1,Police Story 4: Project S (Chao ji ji hua) (1993),Accion
+944,759,5,Fair Game (1995),Accion
+944,779,5,Drop Zone (1994),Accion
+944,798,3,Bad Company (1995),Accion
+944,810,5,"Shadow, The (1994)",Accion
+944,833,1,Bulletproof (1996),Accion
+944,838,1,In the Line of Duty 2 (1987),Accion
+944,977,1,"Substitute, The (1996)",Accion
+944,1027,3,"Shooter, The (1995)",Accion
+944,1087,2,Bloodsport 2 (1995),Accion
+944,1088,2,Double Team (1997),Accion
+944,1222,1,Judgment Night (1993),Accion
+944,1228,1,Under Siege 2: Dark Territory (1995),Accion
+944,1244,5,Metro (1997),Accion
+944,1250,1,Best of the Best 3: No Turning Back (1995),Accion
+944,1303,1,"Getaway, The (1994)",Accion
+944,1358,5,The Deadly Cure (1996),Accion
+944,1362,1,American Strays (1996),Accion
+944,1364,5,Bird of Prey (1996),Accion
+944,1372,3,"Stranger, The (1994)",Accion
+944,1407,4,"Specialist, The (1994)",Accion
+944,1413,1,Street Fighter (1994),Accion
+944,1414,1,Coldblooded (1995),Accion
+944,1552,4,"Hunted, The (1995)",Accion
+944,463,4,"Secret of Roan Inish, The (1994)",Aventura
+944,519,1,"Treasure of the Sierra Madre, The (1948)",Aventura
+944,530,4,"Man Who Would Be King, The (1975)",Aventura
+944,826,4,"Phantom, The (1996)",Aventura
+944,1116,2,"Mark of Zorro, The (1940)",Aventura
+944,1576,1,"Hungarian Fairy Tale, A (1987)",Fantasia
+945,600,4,Daniel Defoe's Robinson Crusoe (1996),Niños
+945,791,4,"Baby-Sitters Club, The (1995)",Niños
+945,1164,5,Zeus and Roxanne (1997),Niños
+945,548,1,"NeverEnding Story III, The (1994)",Niños y fantasia
+945,1292,5,"Simple Wish, A (1997)",Niños y fantasia
+945,102,1,"Aristocats, The (1970)",Niños y animacion 
+945,404,4,Pinocchio (1940),Niños y animacion 
+945,625,3,"Sword in the Stone, The (1963)",Niños y animacion 
+945,946,3,"Fox and the Hound, The (1981)",Niños y animacion 
+945,969,2,Winnie the Pooh and the Blustery Day (1968),Niños y animacion 
+945,1066,4,Balto (1995),Niños y animacion 
+945,1078,4,Oliver & Company (1988),Niños y animacion 
+945,1409,1,"Swan Princess, The (1994)",Niños y animacion 
+945,1412,3,Land Before Time III: The Time of the Great Giving (1995) (V),Niños y animacion 
+945,1470,5,Gumby: The Movie (1995),Niños y animacion 
+945,71,3,"Lion King, The (1994)","Niños , animación y música"
+945,99,4,Snow White and the Seven Dwarfs (1937),"Niños , animación y música"
+945,103,5,All Dogs Go to Heaven 2 (1996),"Niños , animación y música"
+945,418,2,Cinderella (1950),"Niños , animación y música"
+945,420,4,Alice in Wonderland (1951),"Niños , animación y música"
+945,432,3,Fantasia (1940),"Niños , animación y música"
+945,473,4,James and the Giant Peach (1996),"Niños , animación y música"
+945,501,2,Dumbo (1941),"Niños , animación y música"
+945,538,4,Anastasia (1997),"Niños , animación y música"
+945,588,3,Beauty and the Beast (1991),"Niños , animación y música"
+945,596,3,"Hunchback of Notre Dame, The (1996)","Niños , animación y música"
+945,624,5,"Three Caballeros, The (1945)","Niños , animación y música"
+945,989,2,Cats Don't Dance (1997),"Niños , animación y música"
+945,63,5,"Santa Clause, The (1994)",Niños y comedia
+945,94,4,Home Alone (1990),Niños y comedia
+945,138,5,D3: The Mighty Ducks (1996),Niños y comedia
+945,139,4,"Love Bug, The (1969)",Niños y comedia
+945,225,4,101 Dalmatians (1996),Niños y comedia
+945,243,4,Jungle2Jungle (1997),Niños y comedia
+945,259,5,George of the Jungle (1997),Niños y comedia
+945,261,4,Air Bud (1997),Niños y comedia
+945,377,1,Heavyweights (1994),Niños y comedia
+945,383,5,"Flintstones, The (1994)",Niños y comedia
+945,400,2,"Little Rascals, The (1994)",Niños y comedia
+945,477,2,Matilda (1996),Niños y comedia
+945,539,5,Mouse Hunt (1997),Niños y comedia
+945,623,5,Angels in the Outfield (1994),Niños y comedia
+945,795,4,Richie Rich (1994),Niños y comedia
+945,843,3,"Shaggy Dog, The (1959)",Niños y comedia
+945,894,5,Home Alone 3 (1997),Niños y comedia
+945,929,5,Harriet the Spy (1996),Niños y comedia
+945,932,3,First Kid (1996),Niños y comedia
+945,996,4,"Big Green, The (1995)",Niños y comedia
+945,1032,4,Little Big League (1994),Niños y comedia
+945,91,5,"Nightmare Before Christmas, The (1993)","Niños, comedia y musica"
+945,419,1,Mary Poppins (1964),"Niños, comedia y musica"
+945,892,2,Flubber (1997),"Niños, comedia y fantasia"
+945,1336,5,Kazaam (1996),"Niños, comedia y fantasia"
+945,1,5,Toy Story (1995),"Niños, comedia y animación"
+945,422,5,Aladdin and the King of Thieves (1996),"Niños, comedia y animación"
+945,95,3,Aladdin (1992),"Niños, comedia, animación y musical"
