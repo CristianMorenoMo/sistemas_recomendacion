@@ -1,0 +1,7 @@
+### requeriments
+
+
+numpy
+scikit-surprise
+pandas
+seaborn

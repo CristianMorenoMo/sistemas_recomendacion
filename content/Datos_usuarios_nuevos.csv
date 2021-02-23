@@ -1,4 +1,4 @@
-user id,movie id,Rating,movie title,genero
+user_id,item_id,rating,movie title,genero
 944,27,2,Bad Boys (1995),Accion
 944,233,4,Under Siege (1992),Accion
 944,263,2,Steel (1997),Accion
