@@ -5,3 +5,4 @@ numpy
 scikit-surprise
 pandas
 seaborn
+lenskit
