@@ -14,7 +14,7 @@ def update_site_forward(apps, schema_editor):
         id=settings.SITE_ID,
         defaults={
             "domain": "example.com",
-            "name": "last_fm_recommendation",
+            "name": "last-fm",
         },
     )
 

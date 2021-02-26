@@ -1,5 +1,5 @@
-last_fm_recommendation
-======================
+last-fm
+=======
 
 Behold My Awesome Project!
 

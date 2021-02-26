@@ -1,9 +1,9 @@
-.. last_fm_recommendation documentation master file, created by
+.. last-fm documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to last_fm_recommendation's documentation!
+Welcome to last-fm's documentation!
 ======================================================================
 
 .. toctree::

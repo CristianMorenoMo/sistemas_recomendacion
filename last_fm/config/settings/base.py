@@ -221,7 +221,7 @@ EMAIL_TIMEOUT = 5
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Daniel Roy Greenfeld""", "ccmorenomojica@gmail.com")]
+ADMINS = [("""grupo_8""", "ccmorenomojica@gmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 

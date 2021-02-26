@@ -54,11 +54,19 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
     "DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True
 )
 
+# STORAGES
+# ------------------------------------------------------------------------------
+# https://django-storages.readthedocs.io/en/latest/#installation
+INSTALLED_APPS += ["storages"]  # noqa F405
+GS_BUCKET_NAME = env("DJANGO_GCP_STORAGE_BUCKET_NAME")
+GS_DEFAULT_ACL = "publicRead"
 # STATIC
 # ------------------------
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA
 # ------------------------------------------------------------------------------
+DEFAULT_FILE_STORAGE = "last_fm.utils.storages.MediaRootGoogleCloudStorage"
+MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/media/"
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
@@ -77,13 +85,13 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="last_fm_recommendation <noreply@example.com>"
+    "DJANGO_DEFAULT_FROM_EMAIL", default="last-fm <noreply@example.com>"
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
-    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[last_fm_recommendation]"
+    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[last-fm]"
 )
 
 # ADMIN
@@ -105,8 +113,6 @@ ANYMAIL = {}
 # ------------------------------------------------------------------------------
 # https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_ENABLED
 COMPRESS_ENABLED = env.bool("COMPRESS_ENABLED", default=True)
-# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_STORAGE
-COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
 # https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_URL
 COMPRESS_URL = STATIC_URL  # noqa F405
 # https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE

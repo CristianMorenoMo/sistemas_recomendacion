@@ -26,9 +26,9 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = "last_fm_recommendation"
-copyright = """2021, Daniel Roy Greenfeld"""
-author = "Daniel Roy Greenfeld"
+project = "last-fm"
+copyright = """2021, grupo_8"""
+author = "grupo_8"
 
 
 # -- General configuration ---------------------------------------------------
