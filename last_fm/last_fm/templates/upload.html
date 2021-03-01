@@ -1,7 +1,4 @@
 
-{% extends "base.html" %}
-{% block title %}Upload Users{% endblock %}
-{% block content %}
 {% if messages %}
 {% for message in messages %}
 <div>
@@ -22,4 +19,3 @@
 {% for profile in profiles %}
 {{profile.name}}
 {% endfor %}
-{% endblock %}
