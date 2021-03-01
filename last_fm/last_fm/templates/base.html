@@ -1,0 +1,172 @@
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Mosaic a Entertainment Category Flat Bootstrap Responsive Website Template | Browse :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Mosaic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="static/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="static/css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<!-- lined-icons -->
+<link rel="stylesheet" href="static/css/icon-font.css" type='text/css' />
+<!-- //lined-icons -->
+ <!-- Meters graphs -->
+<script src="static/js/jquery-2.1.4.js"></script>
+
+
+</head> 
+       <!-- /w3layouts-agile -->
+ <body class="sticky-header left-side-collapsed"  onload="initMap()">
+    <section>
+      <!-- left side start-->
+    <div class="left-side sticky-left-side">
+
+      <!--logo and iconic logo start-->
+      <div class="logo">
+        <h1><a href="{%url 'index' %}">LastFm<span></span></a></h1>
+      </div>
+      <div class="logo-icon text-center">
+        <a href="{% url 'index' %}">L </a>
+      </div>
+   <!-- /w3layouts-agile -->
+      <!--logo and iconic logo end-->
+          <div class="left-side-inner">
+
+        <!--sidebar nav start-->
+          <ul class="nav nav-pills nav-stacked custom-nav">
+            <li class="active"><a href="{% url 'index'%}"><i class="lnr lnr-home"></i><span>Home</span></a></li>
+            
+            
+            <li><a href="{% url 'index'%}"><i class="lnr lnr-music-note"></i> <span>Albums</span></a></li>           
+            
+            <li><a href="{% url 'index'%}"><i class="lnr lnr-book"></i><span>Blog</span></a></li>
+            <li><a href="{% url 'index'%}"><i class="lnr lnr-pencil"></i> <span>Typography</span></a></li>
+            <li class="{% url 'index'%}"><a href="#"><i class="lnr lnr-heart"></i>  <span>My Favourities</span></a> 
+              <ul class="sub-menu-list">
+                <li><a href="{% url 'index'%}">All Songs</a></li>
+              </ul>
+            </li>
+            <li class="menu-list"><a href="contact.html"><i class="fa fa-thumb-tack"></i><span>Contact</span></a>
+              <ul class="sub-menu-list">
+                <li><a href="contact.html">Location</a> </li>
+              </ul>
+            </li>     
+          </ul>
+        <!--sidebar nav end-->
+      </div>
+    </div>
+    <!-- left side end-->
+ 
+    <!-- main content start-->
+    <div class="main-content">
+      <!-- header-starts -->
+      <div class="header-section">
+      <!--toggle button start-->
+      <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+      <!--toggle button end-->
+      <!--notification menu start -->
+        <div class="menu-right">
+          <div class="profile_details">   
+              <div class="col-md-4 serch-part">
+                <div id="sb-search" class="sb-search">
+                  <form>
+
+                    <a class="waves-effect waves-light btn" href="{%url 'browse'%}">button</a>
+                  
+                  </form>
+                </div>
+              </div>
+                <!-- search-scripts -->
+                  
+                  <!-- //search-scripts -->
+                       <!---->
+                        
+                      <div class="col-md-4 login-pop">
+                        
+                          {% if request.user.is_authenticated %}
+                          <a href="{% url 'singout' %}">Salir </a>
+                          {% else %} 
+                          <a href="{% url 'singin' %}">Ingresar </a>
+                          {% endif %}
+
+                      </div>
+                    <div class="clearfix"> </div>
+                </div>
+              <!-------->
+            </div>
+          <div class="clearfix"></div>
+        </div>
+
+
+
+  {% block contenido %}
+
+  {% endblock contenido %}
+
+    
+    <div class="footer two">
+        <div class="footer-grid">
+          <h3>Navigation</h3>
+          <ul class="list1">
+            <li><a href="index.html">Home</a></l
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-grid">
+          <h3>Our Account</h3>
+            <ul class="list1">
+            <li><a href="#" data-toggle="modal" data-target="#myModal5">Your Account</a></li>
+            <li><a href="#">Personal information</a></li>
+            <li><a href="#">Addresses</a></li>
+            </ul>
+        </div>
+        <div class="footer-grid">
+          <h3>Our Support</h3>
+          <ul class="list1">
+            <li><a href="contact.html">Site Map</a></li>
+            <li><a href="#">Search Terms</a></li>
+            </ul>
+          </div>
+            <div class="footer-grid">
+            <h3>Newsletter</h3>
+            <p class="footer_desc">texto</p>
+            <div class="search_footer">
+             <form>
+               <input type="text" placeholder="Email...." required="">
+              <input type="submit" value="Submit">
+              </form>
+            </div>
+           </div>
+           <div class="footer-grid footer-grid_last">
+            <h3>About Us</h3>
+            <p class="footer_desc">text,.</p>
+            <p class="f_text">Phone:  &nbsp;&nbsp;&nbsp;00-250-2131</p>
+            <p class="email">Email : &nbsp;<span><a href="mailto:mail@example.com">info(at)mailing.com</a></span></p> 
+           </div>
+           <div class="clearfix"> </div>
+        </div>
+      </div>
+        <!--footer section start-->
+      <footer>
+         <p>text<a href="https://w3layouts.com/" target="_blank">text.</a></p>
+      </footer>
+        <!--footer section end-->
+   <!-- /wthree-agile -->
+      <!-- main content end-->
+   </section>
+     <!-- /wthree-agile -->
+<script src="static/js/jquery.nicescroll.js"></script>
+<script src="static/js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="static/js/bootstrap.js"></script>
+</body>
+</html>

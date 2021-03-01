@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<link href="/static/css/nouislider.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+<div class="container">
+  <div class="row">
+    <form action="" class="col s4">
+
+        <div class="input-field col s4">
+          <i class="material-icons prefix">search</i>
+          <input name = "name_search" id="buscar" type="text" class="validate">
+          <label for="buscar">Nombre del producto</label>
+        </div>
+        <div class="col s3">
+
+          <center>
+            <button class="waves-effect waves-light btn-large" type="submit">
+              Buscar
+            </button>
+          </center>
+        </div>
+
+    </form>
+  </div>
+
+{% for items in object_list %}
+<div class="col-md-3 browse-grid">
+    <a  href="single.html"><img src=/media/{{items.picture_items.all.0.picture_item}} title="allbum-name"></a>
+     <a href="single.html"><i class="glyphicon glyphicon-play-circle"></i></a>
+      <a class="art" href="single.html">{{items.name_item}}</a>
+</div>
+{% endfor %}
+ 
+  </div>
+
+
+{% endblock contenido %}
