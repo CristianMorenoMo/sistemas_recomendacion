@@ -14,7 +14,9 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 ##########
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
+
 from last_fm.items.models import Items,Artist,Profile
+
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.db.models import Q
@@ -113,12 +115,8 @@ def profile_upload(request):
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
         _, created = Items.objects.update_or_create(
-            username=column[0],
-            first_name=column[1],
-            last_name=column[2],
-            document=column[3],
-            email=column[4],
-            password=column[5],
+            id_item = column[0],
+            name_item = column[1],
         )
     context = {}
     return render(request, template, context)

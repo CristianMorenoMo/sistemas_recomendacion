@@ -12,27 +12,27 @@ class Artist(models.Model):
 
 class Items(models.Model):
 	id_item = models.CharField(blank=True,primary_key=True,max_length=255)
-	id_art = models.ForeignKey(Artist,related_name="id_artista_items",on_delete=models.CASCADE)
+	#artist = models.ForeignKey(Artist,related_name="id_artista_items",on_delete=models.CASCADE)
 	name_item = models.CharField(('name_item'),blank=True, max_length=255)
 	def _str_(self):
 		return"()".format(self.name_item)
 
 class Picture_item(models.Model):
-	id_item = models.ForeignKey(Items,related_name="picture_items",on_delete=models.CASCADE)
+	item = models.ForeignKey(Items,related_name="picture_items",on_delete=models.CASCADE)
 	picture_item = models.ImageField(upload_to = "item_picture")
 	def _str_(self):
 		return"()".format(self.id_item)
 
 class Picture_art(models.Model):
-	id_art = models.ForeignKey(Artist,related_name = "picture_artist",on_delete=models.CASCADE)
+	artist = models.ForeignKey(Artist,related_name = "picture_artist",on_delete=models.CASCADE)
 	picture_art = models.ImageField(upload_to = "artist_picture")
 	def _str_(self):
 		return"()".format(self.id_art)
 
 class tx_item(models.Model):
 	#id_user = models.ForeignKey(User,related_name = "tx_user",on_delete=models.CASCADE)
-	id_art = models.ForeignKey(Artist,related_name = "tx_artist",on_delete=models.CASCADE)
-	id_item = models.ForeignKey(Items,related_name="tx_items",on_delete=models.CASCADE)
+	artist = models.ForeignKey(Artist,related_name = "tx_artist",on_delete=models.CASCADE)
+	item = models.ForeignKey(Items,related_name="tx_items",on_delete=models.CASCADE)
 	date_tx =  models.DateTimeField(auto_now=True)
 	def _str_(self):
 		return"()".format(self.id_art,self.id_item)
