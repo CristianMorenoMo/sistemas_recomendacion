@@ -42,14 +42,14 @@ class Index(ListView):
 		return items
 	
 class Browse(ListView):
-	template_name = 'browse.html'
+	template_name = 'index.html'
 	model = Items
 	paginate_by = 20
 
 	def get_queryset(self):
 		query=None
-		if('name_search' in self.request.GET) and self.request.GET['name_search'] != "":
-			query = Q(name_item =self.request.GET['name_search'])
+		if('search' in self.request.GET) and self.request.GET['search'] != "":
+			query = Q(name_item =self.request.GET['search'])
 
 		if query is not None:
 			items = Items.objects.filter(query)
@@ -75,7 +75,7 @@ class SingIn(LoginView):
 
 class SignUpView(FormView):
     """Users sign up view."""
-    template_name = 'register.html'
+    template_name = 'index.html'
     form_class = SignupForm
     success_url = reverse_lazy('index')
 
@@ -94,7 +94,7 @@ class SignUpView(FormView):
 def profile_upload(request):
     # declaring template
     template = "upload.html"
-    data = Items.objects.all()
+    data = Artist.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
         'order': 'Order of the CSV should be name, email, address, phone, profile',
@@ -114,9 +114,10 @@ def profile_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Items.objects.update_or_create(
+        _, created = Artist.objects.update_or_create(
             id_item = column[0],
-            name_item = column[1],
+            artist = column[1],
+            name_item = column[2],
         )
     context = {}
     return render(request, template, context)
