@@ -3806,9 +3806,9 @@ text-decoration:none;
 		font-size: 0.9em;
 	}
 	.browse-grid {
-		width: 50%;
+		width: 25%;
 		float: left;
-		margin-right: 0%;
+		margin-right: 2%;
 		margin-bottom: 2%;
 		padding: 0 5px;
 	}

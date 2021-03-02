@@ -42,7 +42,7 @@ class Index(ListView):
 		return items
 	
 class Browse(ListView):
-	template_name = 'index.html'
+	template_name = 'base.html'
 	model = Items
 	paginate_by = 20
 
@@ -75,7 +75,7 @@ class SingIn(LoginView):
 
 class SignUpView(FormView):
     """Users sign up view."""
-    template_name = 'index.html'
+    template_name = 'register.html'
     form_class = SignupForm
     success_url = reverse_lazy('index')
 
