@@ -1,6 +1,7 @@
 import csv
 import io
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 #######
 
 from django.contrib.auth import get_user_model
@@ -15,10 +16,10 @@ from rest_framework.permissions import IsAuthenticated
 ##########
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from last_fm.items.models import Items,Artist,Profile
+from last_fm.items.models import Items,Profile
 
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.db.models import Q
 from django.shortcuts import render
 from users.forms import SignupForm
@@ -30,36 +31,27 @@ class Index(ListView):
 	model = Items
 	paginate_by = 20
 
-	def get_queryset(self):
-		query=None
-		if('name_search' in self.request.GET) and self.request.GET['name_search'] != "":
-			query = Q(name_item =self.request.GET['name_search'])
 
-		if query is not None:
-			items = Items.objects.filter(query)
-		else:
-			items = Items.objects.all()
-		return items
 	
 class Browse(ListView):
-	template_name = 'base.html'
+	template_name = 'index.html'
 	model = Items
 	paginate_by = 20
+	
+	@csrf_exempt
+	def post(self, request):
+         if('search' in request.POST) and self.request.POST['search'] != "":
+            query = Q(name_item = request.POST["search"])
 
-	def get_queryset(self):
-		query=None
-		if('search' in self.request.GET) and self.request.GET['search'] != "":
-			query = Q(name_item =self.request.GET['search'])
-
-		if query is not None:
-			items = Items.objects.filter(query)
-		else:
-			items = Items.objects.all()
-		return items
+         if query is not None:
+            items = Items.objects.filter(query)
+         else:
+            items = Items.objects.all()
+         return items
 
 
 class SingOut(LogoutView):
-	next_page = reverse_lazy('index')
+	next_page = reverse_lazy()
 
 class SingIn(LoginView):
 	template_name = 'login.html'
@@ -93,8 +85,8 @@ class SignUpView(FormView):
 @permission_classes([IsAuthenticated])
 def profile_upload(request):
     # declaring template
-    template = "upload.html"
-    data = Artist.objects.all()
+    template_name = "upload.html"
+    data = Items.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
         'order': 'Order of the CSV should be name, email, address, phone, profile',
@@ -102,7 +94,7 @@ def profile_upload(request):
     }
     # GET request returns the value of the data with the specified key.
     if request.method == "GET":
-        return render(request, template, prompt)
+        return render(request, template_name, prompt)
     csv_file = request.FILES['file']
     # let's check if it is a csv file
     if not csv_file.name.endswith('.csv'):
@@ -114,13 +106,13 @@ def profile_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Artist.objects.update_or_create(
+        _, created = Items.objects.update_or_create(
             id_item = column[0],
-            artist = column[1],
-            name_item = column[2],
+            name_item = column[1],
+            name_art = column[2],
         )
     context = {}
-    return render(request, template, context)
+    return render(request, template_name, context)
 
 
 

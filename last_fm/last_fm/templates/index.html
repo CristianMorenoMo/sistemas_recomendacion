@@ -86,6 +86,7 @@
 			<div class="clearfix"> </div>
 		</div>
 		{% for items in object_list %}
+		/media/{{items.picture_items.all.0.picture_item}}
 		<div class="col-md-3 browse-grid">
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src=/media/{{items.picture_items.all.0.picture_item}} title={{items.name_item}}></a>
 			<a class="button play-icon popup-with-zoom-anim" href="#small-dialog"><small>{{items.name_item}}</small></a>

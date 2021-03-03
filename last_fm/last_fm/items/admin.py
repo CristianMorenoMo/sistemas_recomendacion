@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Items, Artist,Picture_item,Picture_art,tx_item
+from .models import Items,Picture_item
 
-@admin.register(Items,Artist,Picture_item,Picture_art,tx_item)
+@admin.register(Items,Picture_item)
 class AuthorAdmin(admin.ModelAdmin):
 	pass
 

@@ -30,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head> 
        <!-- /w3layouts-agile -->
- <body class="sticky-header left-side-collapsed"  onload="initMap()">
+ <body class="sticky-header left-side-collapsed"  >
     <section>
       <!-- left side start-->
     <div class="left-side sticky-left-side">
@@ -160,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <div class="profile_details">   
               <div class="col-md-4 serch-part">
                 <div id="sb-search" class="sb-search">
-                  <form action="{% url 'browse' %}" method="post">
+                  <form action="{% url 'browse'%}" method="post">{% csrf_token %}
 
                     <input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
                     <input class="sb-search-submit" type="submit" value="">
