@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticated
 ##########
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from last_fm.items.models import Items,Profile
+from last_fm.items.models import Item,Artist
 
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect,HttpResponse
@@ -28,26 +28,25 @@ User = get_user_model()
 
 class Index(ListView):
 	template_name = 'index.html'
-	model = Items
+	model = Item
 	paginate_by = 20
 
 
 	
 class Browse(ListView):
 	template_name = 'index.html'
-	model = Items
+	model = Item
 	paginate_by = 20
 	
 	@csrf_exempt
 	def post(self, request):
-         if('search' in request.POST) and self.request.POST['search'] != "":
-            query = Q(name_item = request.POST["search"])
-
-         if query is not None:
-            items = Items.objects.filter(query)
-         else:
-            items = Items.objects.all()
-         return items
+		if('search' in request.POST) and (self.request.POST['search'] != ""):
+			query = Q(traname = request.POST["search"])
+			if query is not None:
+				items = Item.objects.filter(query)
+			else:
+				items = Item.objects.all()
+			return items
 
 
 class SingOut(LogoutView):
@@ -86,7 +85,7 @@ class SignUpView(FormView):
 def profile_upload(request):
     # declaring template
     template_name = "upload.html"
-    data = Items.objects.all()
+    data = Item.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
         'order': 'Order of the CSV should be name, email, address, phone, profile',
@@ -106,11 +105,12 @@ def profile_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Items.objects.update_or_create(
-            id_item = column[0],
-            name_item = column[1],
-            name_art = column[2],
-        )
+        cs = Item(
+            traid = column[0],
+            traname = column[1]
+            )
+        cs.artist = Artist.objects.get(id=column[2])
+        cs.save()
     context = {}
     return render(request, template_name, context)
 
