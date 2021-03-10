@@ -23,97 +23,29 @@
 		});
 </script>	
 
-				<div class="row">
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				  <div class="col-md-1">.col-md-1</div>
-				</div>
-				<div class="row">
-				  <div class="col-md-8">.col-md-8</div>
-				  <div class="col-md-4">.col-md-4</div>
-				</div>
-				<div class="row">
-				  <div class="col-md-4">.col-md-4</div>
-				  <div class="col-md-4">.col-md-4</div>
-				  <div class="col-md-4">.col-md-4</div>
-				</div>
-				<div class="row">
-				  <div class="col-md-6">.col-md-6</div>
-				  <div class="col-md-6">.col-md-6</div>
-				</div>
-
-				<div class="row">
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-</div>
 <div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-
-
-
-<div class="row">
-  <div class="col-md-6"><h1>
+  <div class="col-md-4"><h1>
 	  <div class="albums">
 		<div class="tittle-head">
 			<h3 class="tittle">New Releases <span class="new">New</span></h3>
 			<a href="index.html"><h4 class="tittle"></h4></a>
 			<div class="clearfix"> </div>
 		</div>
-		{% for items in object_list %}
-		/media/{{items.picture_items.all.0.picture_item}}
-		<div class="col-md-3 browse-grid">
-			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src=/media/{{items.picture_items.all.0.picture_item}} title={{items.name_item}}></a>
-			<a class="button play-icon popup-with-zoom-anim" href="#small-dialog"><small>{{items.traname}}</small></a>
-		</div>
-		{% endfor %}	
-	  </div>
-	  <div class="albums">
-		<div class="tittle-head">
-			<h3 class="tittle">TOP 10! <span class="new">New</span></h3>
-			<a href="index.html"><h4 class="tittle"></h4></a>
-			<div class="clearfix"> </div>
-		</div>
-		{% for items in object_list %}
-		<div class="col-md-3 browse-grid">
-			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src=/media/{{items.picture_items.all.0.picture_item}} title=<small>{{items.traname}}</small>></a>
-			
-		</div>
-		{% endfor %}	
+			{% for item in top_base %}
+			<div class="col-md-4 browse-grid">
+
+			<a class="play-icon popup-with-zoom-anim">
+			<img src="/media/{{item.image_item.all.0.image}}"></a>
+			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{item.name_art}}</small></a>
+
+			</div>
+			{% endfor %}	
 	  </div>
    </div>
 
 </h1></div>
 
 
-
-  <div class="col-md-6"><h1>.col-md-6</h1></div>
-</div>
 
 {% endblock contenido %}
 

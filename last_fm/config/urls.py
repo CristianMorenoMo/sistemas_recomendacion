@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
-from last_fm.users.views import Index,Browse,SingIn,SingOut,SignUpView,profile_upload
+from last_fm.users.views import Index,Browse,SingIn,SingOut,SignUpView,profile_upload,Play
 
 
 urlpatterns = [
@@ -14,8 +14,7 @@ urlpatterns = [
     path('singout',SingOut.as_view(),name = 'singout'),
     path('signup',SignUpView.as_view(),name='signup'),
     path('upload',profile_upload,name='upload'),
-
-
+    path('play',Play.as_view(),name='play'),
 
 
     # Django Admin, use {% url 'admin:index' %}

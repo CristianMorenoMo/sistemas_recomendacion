@@ -1,27 +1,27 @@
 
 <main>
 	<center>
-		<div class="section"></div>
+		<div class=""></div>
 
-		<div class="container">
-			<div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE; width: 60%;">
+		<div class="">
+			<div class="">
 
-				<form class="col s12" action="{% url 'singin' %}" method="POST">
+				<form class=" " action="{% url 'singin' %}" method="POST">
 					{% csrf_token %}
-					<div class='row'>
-						<div class="row">
+					<div class=' '>
+						<div class=" ">
 							<h1>
 								Ingresar
 							</h1>
 						</div>
 
-						<div class='col s12'>
-							<div class="row">
+						<div class=' '>
+							<div class=" ">
 
 								{% if form.errors %}
-								<div class="col s12 m10 l10 offset-m1 offset-l1">
-									<div class="chip red" style="padding: 5px 5px 5px 10px; width: 100%; height: 50px;">
-										<i class=" close material-icons right white-text">close</i>
+								<div class="">
+									<div class="">
+										<i class="">close</i>
 										<center>
 											<h6 class="white-text">Verifique su contraseña o correo electrónico<h6>
 											</center>
@@ -33,8 +33,8 @@
 						</div>
 
 
-						<div class='row form-group'>
-							<div class='input-field col s12'>
+						<div class='form-group'>
+							<div class='input-field'>
 								<input class='validate login__form' type='email' name='username' id='email' required="required" />
 								<label for='email'>Ingresa tu correo</label>
 								<span class="helper-text">
@@ -45,8 +45,8 @@
 							</div>
 						</div>
 
-						<div class='row'>
-							<div class='input-field col s12'>
+						<div class=''>
+							<div class='input-field  '>
 								<input class='validate login__form' type='password' name='password' id='password' required="required" />
 								<label for='password'>Ingresa tu contraseña</label>
 								<span class="helper-text">
@@ -59,8 +59,8 @@
 
 						<br />
 						<center>
-                        <div class='row'>
-                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Ingresar</button>
+                        <div class=' '>
+                            <button type='submit' name='btn_login' class='btn btn-large waves-effect'>Ingresar</button>
                         </div>
 			</center>
 		</form>

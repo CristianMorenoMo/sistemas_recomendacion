@@ -2,6 +2,7 @@ import csv
 import io
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import logout
 #######
 
 from django.contrib.auth import get_user_model
@@ -16,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 ##########
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from last_fm.items.models import Item,Artist
+from last_fm.items.models import Artist,RequestedPlay
 
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect,HttpResponse
@@ -27,31 +28,47 @@ User = get_user_model()
 
 
 class Index(ListView):
+    #username = None
+    #if request.user.is_authenticated():
+    #    username = request.user.username
+    #    query =  RequestedPlay.objects.all()
+    #    query = query.filter(user=username).order_by('created')[-10:] 
+ 
+    #else:
+    #   RequestedPlay.objects.all().order_by('created')[-10:]
+
+
+
 	template_name = 'index.html'
-	model = Item
-	paginate_by = 20
+	model = Artist
+	paginate_by = 10
+
+
 
 
 	
 class Browse(ListView):
 	template_name = 'index.html'
-	model = Item
-	paginate_by = 20
+	model = Artist
+	paginate_by = 10
 	
 	@csrf_exempt
 	def post(self, request):
 		if('search' in request.POST) and (self.request.POST['search'] != ""):
 			query = Q(traname = request.POST["search"])
-			if query is not None:
-				items = Item.objects.filter(query)
-			else:
-				items = Item.objects.all()
-			return items
-
+		if query is not None:
+			#print(query)
+			traname = Artist.objects.filter(query)
+			print(traname)
+		return traname
 
 class SingOut(LogoutView):
-	next_page = reverse_lazy()
+    #next_page = reverse_lazy()
 
+    def logout_view(request):
+        logout(request)
+        next_page = reverse_lazy('index')
+    
 class SingIn(LoginView):
 	template_name = 'login.html'
 	def get(self, request,*arg,**kwargs):
@@ -76,8 +93,10 @@ class SignUpView(FormView):
         return super().form_valid(form)
 
 
-
-
+class Play(ListView):
+    template_name = 'single.html'
+    model = RequestedPlay
+    paginate_by = 10
 
 @api_view(['GET','POST'])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
@@ -85,7 +104,7 @@ class SignUpView(FormView):
 def profile_upload(request):
     # declaring template
     template_name = "upload.html"
-    data = Item.objects.all()
+    data = RequestedPlay.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
         'order': 'Order of the CSV should be name, email, address, phone, profile',
@@ -105,11 +124,12 @@ def profile_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        cs = Item(
-            traid = column[0],
-            traname = column[1]
-            )
-        cs.artist = Artist.objects.get(id=column[2])
+        cs = RequestedPlay(
+            created = column[0]
+                          )
+        ### foering key
+        cs.artist = Artist.objects.get(artid=column[1])
+        cd.user = User.objects.get(username=column[2])
         cs.save()
     context = {}
     return render(request, template_name, context)
