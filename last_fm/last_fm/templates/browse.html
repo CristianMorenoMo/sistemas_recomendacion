@@ -26,9 +26,8 @@
 
 {% for items in object_list %}
 <div class="col-md-3 browse-grid">
-    <a  href="single.html"><img src=/media/{{items.picture_items.all.0.picture_item}} title="allbum-name"></a>
      <a href="single.html"><i class="glyphicon glyphicon-play-circle"></i></a>
-      <a class="art" href="single.html">{{items.name_item}}</a>
+      <a class="art" href="single.html">{{items.image_item.all.0.image}}</a>
 </div>
 {% endfor %}
  

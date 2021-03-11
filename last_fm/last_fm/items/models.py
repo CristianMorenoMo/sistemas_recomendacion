@@ -10,17 +10,6 @@ class Artist(models.Model):
     def __str__(self):
         return "%s" % (self.name_art)
 
-
-#class Item(models.Model):
-#    traid = models.CharField(max_length=200,null=True,unique=True)
-#    traname = models.CharField(max_length=200,null=True)
-#    artist = models.ForeignKey(Artist,max_length=500,on_delete=models.CASCADE,default='DEFAULT VALUE')
-    
-#    def __str__(self):
-#        return "%s" % (self.traname)
-
-
-
 class Picture(models.Model):
     artist = models.OneToOneField(Artist,max_length=500,on_delete=models.CASCADE,default='DEFAULT VALUE')
     image = models.ImageField(upload_to='image_item')
@@ -33,8 +22,6 @@ class RequestedPlay(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return "%s" % (self.user)
-
-
 
 class Profile(models.Model):
 

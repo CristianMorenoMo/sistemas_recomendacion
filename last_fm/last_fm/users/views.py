@@ -17,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 ##########
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from last_fm.items.models import Artist,RequestedPlay
+from last_fm.items.models import Artist,RequestedPlay,Picture
 
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect,HttpResponse
@@ -28,7 +28,11 @@ User = get_user_model()
 
 
 class Index(ListView):
-    #username = None
+	template_name = 'index.html'
+	model = Artist
+	paginate_by = 10
+
+        #username = None
     #if request.user.is_authenticated():
     #    username = request.user.username
     #    query =  RequestedPlay.objects.all()
@@ -36,12 +40,6 @@ class Index(ListView):
  
     #else:
     #   RequestedPlay.objects.all().order_by('created')[-10:]
-
-
-
-	template_name = 'index.html'
-	model = Artist
-	paginate_by = 10
 
 
 
@@ -104,7 +102,7 @@ class Play(ListView):
 def profile_upload(request):
     # declaring template
     template_name = "upload.html"
-    data = RequestedPlay.objects.all()
+    data = Picture.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
         'order': 'Order of the CSV should be name, email, address, phone, profile',
@@ -124,12 +122,13 @@ def profile_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        cs = RequestedPlay(
-            created = column[0]
+        cs = Picture(
+            image = column[1],
+            #name_art = column[0]
                           )
         ### foering key
-        cs.artist = Artist.objects.get(artid=column[1])
-        cd.user = User.objects.get(username=column[2])
+        cs.artist = Artist.objects.get(artid=column[0])
+        #cd.user = User.objects.get(username=column[2])
         cs.save()
     context = {}
     return render(request, template_name, context)
