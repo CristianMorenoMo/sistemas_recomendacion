@@ -37,7 +37,7 @@ class Index(ListView):
     #    username = request.user.username
     #    query =  RequestedPlay.objects.all()
     #    query = query.filter(user=username).order_by('created')[-10:] 
- 
+    ### precalcular  recomendaciones
     #else:
     #   RequestedPlay.objects.all().order_by('created')[-10:]
 
