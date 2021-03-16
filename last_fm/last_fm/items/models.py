@@ -23,8 +23,21 @@ class RequestedPlay(models.Model):
     def __str__(self):
         return "%s" % (self.user)
 
-class Profile(models.Model):
+class Ratings(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    artist = models.OneToOneField(Artist,max_length=100,on_delete=models.CASCADE,default='DEFAULT VALUE')
+    rating = models. FloatField(auto_now_add=True)
+    def __str__(self):
+        return "%s" % (self.user)
 
+class Similarity(models.Model):
+    artist = models.OneToOneField(Artist,max_length=100,on_delete=models.CASCADE,default='DEFAULT VALUE')
+    base_artist = models.CharField(max_length=200,null=True)
+    rating = models. FloatField(auto_now_add=True)
+    def __str__(self):
+        return "%s" % (self.base_artist)
+
+class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     website = models.URLField(max_length=200, blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
