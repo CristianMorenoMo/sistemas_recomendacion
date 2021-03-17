@@ -38,9 +38,9 @@ class Index(ListView):
     #    query =  RequestedPlay.objects.all()
     #    query = query.filter(user=username).order_by('created')[-10:] 
     ### precalcular  recomendaciones
-    print('a')
+    #print('a')
         #else:
-    home = RequestedPlay.objects.raw('''SELECT * FROM items_requestedplay limit 10 ''')
+    #home = RequestedPlay.objects.raw('''SELECT * FROM items_requestedplay limit 10 ''')
 
 
 	
