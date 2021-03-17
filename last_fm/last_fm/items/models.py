@@ -4,36 +4,36 @@ from django.contrib.auth.models import User
 
 
 class Artist(models.Model):
-    artid = models.CharField(max_length=200,null=True)
+    artid = models.CharField(max_length=200,primary_key = True)
     name_art = models.CharField(max_length=200,null=True)
     
     def __str__(self):
         return "%s" % (self.name_art)
 
 class Picture(models.Model):
-    artist = models.OneToOneField(Artist,max_length=500,on_delete=models.CASCADE,default='DEFAULT VALUE')
+    artist = models.ForeignKey(Artist,max_length=500,on_delete=models.CASCADE,default='DEFAULT VALUE')
     image = models.ImageField(upload_to='image_item')
     def __str__(self):
         return "%s" % (self.artist)
 
 class RequestedPlay(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    artist = models.OneToOneField(Artist,max_length=100,on_delete=models.CASCADE,default='DEFAULT VALUE')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    artist = models.ForeignKey(Artist,max_length=100,on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return "%s" % (self.user)
 
 class Ratings(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    artist = models.OneToOneField(Artist,max_length=100,on_delete=models.CASCADE,default='DEFAULT VALUE')
-    rating = models. FloatField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    artist = models.ForeignKey(Artist,max_length=100,on_delete=models.CASCADE)
+    rating = models. FloatField()
     def __str__(self):
         return "%s" % (self.user)
 
 class Similarity(models.Model):
-    artist = models.OneToOneField(Artist,max_length=100,on_delete=models.CASCADE,default='DEFAULT VALUE')
+    artist = models.ForeignKey(Artist,max_length=100,on_delete=models.CASCADE)
     base_artist = models.CharField(max_length=200,null=True)
-    rating = models. FloatField(auto_now_add=True)
+    rating = models. FloatField()
     def __str__(self):
         return "%s" % (self.base_artist)
 

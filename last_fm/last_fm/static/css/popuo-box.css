@@ -24,6 +24,11 @@
 	text-align:center;
 	margin:0 auto;
 }
+.aLaDerecha{
+	text-align: right;
+	flex: 1;
+}
+
 .portfolio-items img{
 	width:100%;
 }

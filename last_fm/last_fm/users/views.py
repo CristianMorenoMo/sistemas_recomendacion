@@ -28,20 +28,19 @@ User = get_user_model()
 
 
 class Index(ListView):
-	template_name = 'index.html'
-	model = Artist
-	paginate_by = 10
+    template_name = 'index.html'
+    model = RequestedPlay
+    paginate_by = 10
 
-        #username = None
-    #if request.user.is_authenticated():
+    username = None
+    #if request.user.is_authenticated:
     #    username = request.user.username
     #    query =  RequestedPlay.objects.all()
     #    query = query.filter(user=username).order_by('created')[-10:] 
     ### precalcular  recomendaciones
-    #else:
-    #   RequestedPlay.objects.all().order_by('created')[-10:]
-
-
+    print('a')
+        #else:
+    home = RequestedPlay.objects.raw('''SELECT * FROM items_requestedplay limit 10 ''')
 
 
 	

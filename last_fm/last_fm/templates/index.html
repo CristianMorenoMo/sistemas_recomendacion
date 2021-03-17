@@ -31,11 +31,11 @@
 			<a href="#"><h4 class="tittle"></h4></a>
 			<div class="clearfix"> </div>
 		</div>
-			{% for item in object_list %}
+			{% for i in object_list %}
 			<div class="col-md-6 browse-grid">
 			<a class="play-icon popup-with-zoom-anim">
 			<img src= /media/{{item.image_item.0.all.image}}></a>
-			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{item.name_art}}</small></a>
+			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{i.artist_id}}</small></a>
 
 
 			</div>
@@ -44,7 +44,40 @@
    </div>
 
 </h1></div>
+<div class="aLaDerecha">
+<div class="music-right">
+	<!-- //widget -->
+	  <div class="widget-side">
+		<h4 class="widget-title">Recent Posts</h4>
+			<ul>
+				<li>
+					{% for i in object_list %}
 
+					<a href="single.html">{{i.artist_id}}</a>
+					<span class="post-date">Feb 13, 2016</span>
+					{% endfor %}
+				</li>
+			</ul>
+		 </div>
+		 <div class="widget-side second">
+		<h4 class="widget-title">Top Songs</h4>
+			<ul>
+				<li>
+					<div class="song-img">
+					  <a href="single.html"><img src="images/play1.png" class="img-responsive" alt="" /></a>
+					</div>
+					<div class="song-text">
+						<a href="single.html">Ellie-Goulding</a>
+						<span class="post-date">Feb 13, 2016</span>
+					</div>
+					<div class="clearfix"></div>
+				</li>
+				
+			</ul>
+		 </div>
+	  <!-- //widget -->
+</div>
+</div>
 
 {% endblock contenido %}
 

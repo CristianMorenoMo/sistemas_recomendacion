@@ -9,6 +9,3 @@ class User(AbstractUser):
     """Default user for last-fm."""
 
     #: First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    age = CharField(_("age"), blank=True, max_length=255)
-    gender = CharField(_("gender"), blank=True, max_length=255)
