@@ -10,3 +10,8 @@ ipython-sql pgspecial
 # ------------------------------------------------------------------------------
 django-storages[google]==1.11.1  # https://github.com/jschneier/django-storages
 django-anymail==8.2  # https://github.com/anymail/django-anymail
+
+## personal
+# -------------------------------------------------------------------------------
+numpy==1.20.1
+pandas==1.2.3
