@@ -17,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 ##########
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from last_fm.items.models import Artist,RequestedPlay,Picture
+from last_fm.items.models import Artist,RequestedPlay,Picture,Ratings
 
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect,HttpResponse
@@ -27,21 +27,20 @@ from users.forms import SignupForm
 User = get_user_model()
 
 
+
+
 class Index(ListView):
     template_name = 'index.html'
-    model = RequestedPlay
+    model = Ratings
     paginate_by = 10
-
-    username = None
-    #if request.user.is_authenticated:
-    #    username = request.user.username
-    #    query =  RequestedPlay.objects.all()
-    #    query = query.filter(user=username).order_by('created')[-10:] 
-    ### precalcular  recomendaciones
-    #print('a')
-        #else:
-    #home = RequestedPlay.objects.raw('''SELECT * FROM items_requestedplay limit 10 ''')
-
+    def get(self,request):
+        if request.user.is_authenticated:
+            print('a')
+            user = request.user.id
+            a = Ratings.objects.filter(user_id =user ).select_related().values('artist')
+            queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
+            print(queryset)
+            return render(request, "index.html", {'recomendacion':queryset})
 
 	
 class Browse(ListView):
