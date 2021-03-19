@@ -3,6 +3,7 @@ import io
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout
+from django.db.models import Count
 #######
 
 from django.contrib.auth import get_user_model
@@ -35,12 +36,14 @@ class Index(ListView):
     paginate_by = 10
     def get(self,request):
         if request.user.is_authenticated:
-            print('a')
             user = request.user.id
             a = Ratings.objects.filter(user_id =user ).select_related().values('artist')
             queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
-            print(queryset)
             return render(request, "index.html", {'recomendacion':queryset})
+        else: 
+             a = RequestedPlay.objects.values('artist').annotate(conteo = Count('user')).order_by('-conteo')[:20]
+             queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
+             return render(request, "index.html", {'recomendacion':queryset})
 
 	
 class Browse(ListView):
