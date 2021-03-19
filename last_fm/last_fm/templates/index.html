@@ -27,13 +27,14 @@
   <div class="col-md-8">
 	  <div class="albums">
 		<div class="tittle-head">
+		{% if user.is_authenticated %}
+		<h1> {{user.username}} </h1>
+		{% endif %}
 			<h1 class="tittle">Recomendación </h1>
 			<a href="#"><h4 class="tittle"></h4></a>
 			<div class="clearfix"> </div>
 		</div>
-			{% if user.is_authenticated %}
-			<h1> {{user.id}} </h1>
-			{% endif %}
+			
 			{% for i in recomendacion %}
 			<div class="col-md-4 browse-grid">
 			<a class="play-icon popup-with-zoom-anim">

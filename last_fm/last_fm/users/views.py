@@ -1,5 +1,7 @@
 import csv
 import io
+import datetime
+import pandas as pd 
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout
@@ -36,10 +38,16 @@ class Index(ListView):
     paginate_by = 10
     def get(self,request):
         if request.user.is_authenticated:
-            user = request.user.id
-            a = Ratings.objects.filter(user_id =user ).select_related().values('artist')
-            queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
-            return render(request, "index.html", {'recomendacion':queryset})
+            if str(request.user.date_joined).split()[0] == str(datetime.datetime.today()).split()[0]:
+                 a = RequestedPlay.objects.values('artist').annotate(conteo = Count('user')).order_by('-conteo')[:20]
+                 queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
+                 return render(request, "index.html", {'recomendacion':queryset})
+
+            else :
+                user = request.user.id
+                a = Ratings.objects.filter(user_id =user ).select_related().values('artist')
+                queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
+                return render(request, "index.html", {'recomendacion':queryset})
         else: 
              a = RequestedPlay.objects.values('artist').annotate(conteo = Count('user')).order_by('-conteo')[:20]
              queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
@@ -66,7 +74,7 @@ class SingOut(LogoutView):
 
     def logout_view(request):
         logout(request)
-        next_page = reverse_lazy('index')
+        return redirect('index')
     
 class SingIn(LoginView):
 	template_name = 'login.html'
