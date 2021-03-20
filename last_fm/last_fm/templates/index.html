@@ -21,55 +21,125 @@
 			mainClass: 'my-mfp-zoom-in'
 		});
 		});
+
+
 </script>	
 
+{% if user.is_authenticated %}
 <div class="row">
   <div class="col-md-8">
 	  <div class="albums">
 		<div class="tittle-head">
-		{% if user.is_authenticated %}
 		<h1> {{user.username}} </h1>
-		{% endif %}
 			<h1 class="tittle">Recomendación </h1>
 			<a href="#"><h4 class="tittle"></h4></a>
 			<div class="clearfix"> </div>
 		</div>
-			
+
+<script type="text/javascript">
+	
+			function trunc(numero){
+			var numero = numero;
+
+
+			numero = Math.trunc(numero);
+			console.log(numero);
+			return numero
+		}
+		document.write(trunc(8.90));
+
+</script>
 			{% for i in recomendacion %}
 			<div class="col-md-4 browse-grid">
 			<a class="play-icon popup-with-zoom-anim">
-			<img src= /media/{{item.image_item.0.all.image}}></a>
-			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{i}}</small></a>
+			<img src= "/home/dot/Documents/sistemas_recomendacion/last_fm/cover1.jpg"></a>
+			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{i.artist.name_art}}</small></a>
 			</div>
 			{% endfor %}
 
 	  </div>
    </div>
-   <div class="albums col-md-3">
-   </div>   	
-  <div class="albums col-md-3">
-  	<div class="music-right">
-		<!-- //widget -->
-		  <div class="widget-side">
-			<h4 class="widget-title">tabla</h4>
-				<ul>
-					<li>{% for i in recomendacion %}
-						<a href="single.html">{{i}}</a>
-						<span class="post-date">{{i}}</span>
-						{% endfor %}
-					</li>
-				</ul>
-			 </div>
-		  <!-- //widget -->
-	</div>
- 
-  </div>   
-</div>
-</h1></div>
+   <div class="albums col-md-4">
+   <div class="albums col-md-4">
+   <div class="bs-docs-example">
+    	
+		<table class="table">
+		  <thead>
+			<tr>
+			  <th>Artista</th>
+			  <th>Estimación</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in recomendacion %}
+			<tr>
+			  <td>{{i.artist.name_art}}</td>
+			  <td id= "rRating" onshow="trunc(i.rating)">{{i.rating}}</td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+    </div>
+    </div>
+    </div>
+{% endif %}
+
 <div class="row">
+  <div class="col-md-8">
+	  <div class="albums">
+		<div class="tittle-head">
+		<h1> {{user.username}} </h1>
+			<h1 class="tittle">Recomendación </h1>
+			<a href="#"><h4 class="tittle"></h4></a>
+			<div class="clearfix"> </div>
+		</div>
+
+<script type="text/javascript">
+	
+			function trunc(numero){
+			var numero = numero;
 
 
-</div>
+			numero = Math.trunc(numero);
+			console.log(numero);
+			return numero
+		}
+
+</script>
+			{% for i in recomendacion %}
+			<div class="col-md-4 browse-grid">
+			<a class="play-icon popup-with-zoom-anim">
+			<img src= "/media/image_item/cover1.jpg"></a>
+			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{i.name_art}}</small></a>
+			</div>
+			{% endfor %}
+
+	  </div>
+   </div>
+   <div class="albums col-md-4">
+   <div class="albums col-md-4">
+   <div class="bs-docs-example">
+    	
+		<table class="table">
+		  <thead>
+			<tr>
+			  <th>Artista</th>
+			  <th>Estimación</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in recomendacion %}
+			<tr>
+			  <td>{{i.name_art}}</td>
+			  <td id= onshow="trunc({{i.rating}}">{{i.rating}}</td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+    </div>
+    </div>
+    </div>
+
 
 
 {% endblock contenido %}

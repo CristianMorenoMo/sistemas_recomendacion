@@ -30,8 +30,6 @@ from users.forms import SignupForm
 User = get_user_model()
 
 
-
-
 class Index(ListView):
     template_name = 'index.html'
     model = Ratings
@@ -45,8 +43,9 @@ class Index(ListView):
 
             else :
                 user = request.user.id
-                a = Ratings.objects.filter(user_id =user ).select_related().values('artist')
-                queryset = Artist.objects.filter(artid__in = [i['artist'] for i in a ])
+
+                queryset = Ratings.objects.filter(user_id = user ).select_related('artist')
+
                 return render(request, "index.html", {'recomendacion':queryset})
         else: 
              a = RequestedPlay.objects.values('artist').annotate(conteo = Count('user')).order_by('-conteo')[:20]
@@ -74,7 +73,7 @@ class SingOut(LogoutView):
 
     def logout_view(request):
         logout(request)
-        return redirect('index')
+        return redirect('index', permanent=False)
     
 class SingIn(LoginView):
 	template_name = 'login.html'
