@@ -69,11 +69,15 @@ class Browse(ListView):
 		return traname
 
 class SingOut(LogoutView):
+    
     #next_page = reverse_lazy()
-
     def logout_view(request):
         logout(request)
-        return redirect('index', permanent=False)
+        print ("ya")
+        return  render(request,'template/logout.html')
+    #def logout_view(request):
+        #logout(request)
+        #return redirect('index', permanent=False)
     
 class SingIn(LoginView):
 	template_name = 'login.html'

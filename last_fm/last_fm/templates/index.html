@@ -36,26 +36,17 @@
 			<div class="clearfix"> </div>
 		</div>
 
-<script type="text/javascript">
-	
-			function trunc(numero){
-			var numero = numero;
 
-
-			numero = Math.trunc(numero);
-			console.log(numero);
-			return numero
-		}
-		document.write(trunc(8.90));
 
 </script>
 			{% for i in recomendacion %}
 			<div class="col-md-4 browse-grid">
 			<a class="play-icon popup-with-zoom-anim">
-			<img src= "/home/dot/Documents/sistemas_recomendacion/last_fm/cover1.jpg"></a>
+			<img src= "/media/image_item/download.jpeg"></a>
 			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{i.artist.name_art}}</small></a>
 			</div>
 			{% endfor %}
+
 
 	  </div>
    </div>
@@ -66,8 +57,8 @@
 		<table class="table">
 		  <thead>
 			<tr>
-			  <th>Artista</th>
-			  <th>Estimación</th>
+			  <th>Restaurantes</th>
+			  <th>Rating </th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -82,8 +73,7 @@
     </div>
     </div>
     </div>
-{% endif %}
-
+{% else %}
 <div class="row">
   <div class="col-md-8">
 	  <div class="albums">
@@ -109,7 +99,7 @@
 			{% for i in recomendacion %}
 			<div class="col-md-4 browse-grid">
 			<a class="play-icon popup-with-zoom-anim">
-			<img src= "/media/image_item/cover1.jpg"></a>
+			<img src= "/media/image_item/download.jpeg"></a>
 			<a class="btn-large waves-effect waves-light teal lighten-1" href="{%url 'play'%}"><small>{{i.name_art}}</small></a>
 			</div>
 			{% endfor %}
@@ -140,7 +130,7 @@
     </div>
     </div>
 
-
+{% endif %}
 
 {% endblock contenido %}
 

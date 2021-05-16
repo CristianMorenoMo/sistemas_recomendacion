@@ -34,10 +34,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="left-side sticky-left-side">
       <!--logo and iconic logo start-->
       <div class="logo">
-        <h1><a href="{% url 'index' %}">Las<span>Fm</span></a></h1>
+        <h1><a href="{% url 'index' %}">YELP<span>R</span></a></h1>
       </div>
       <div class="logo-icon text-center">
-        <a href="{% url 'index' %}">fm </a>
+        <a href="{% url 'index' %}">YELP </a>
       </div>
       <div class="left-side-inner">
         <!--sidebar nav start-->
@@ -167,35 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </script>
                 <!-- //search-scripts -->
                       <!---->
-                <div class="col-md-4 player">
-                    <div class="audio-player">
-                      <audio id="audio-player"  controls="controls">
-                      <source src="static/media/Blue Browne.ogg" type="audio/ogg"></source>
-                      <source src="static/media/Blue Browne.mp3" type="audio/mpeg"></source></audio>
-                    </div>
-                  <!---->
-                  <script type="text/javascript">
-                    $(function(){
-                      $('#audio-player').mediaelementplayer({
-                      alwaysShowControls: true,
-                      features: ['playpause','progress','volume'],
-                      audioVolume: 'horizontal',
-                      iPadUseNativeControls: true,
-                      iPhoneUseNativeControls: true,
-                      AndroidUseNativeControls: true
-                    });
-                   });
-                  </script>
-                  <!--audio-->
-                    <link rel="stylesheet" type="text/css" media="all" href="static/css/audio.css">
-                    <script type="text/javascript" src="static/js/mediaelement-and-player.min.js"></script>
-                    <!---->
-                  <!--//-->
-                  <ul class="next-top">
-                    <li><a class="ar" href="#"> <img src="static/images/arrow.png" alt=""/></a></li>
-                    <li><a class="ar2" href="#"><img src="static/images/arrow2.png" alt=""/></i></a></li>                         
-                 </ul>  
-                </div>
+                
                     <div class="col-md-4 login-pop">
                       {% if request.user.is_authenticated %}
                         <div id="loginpop"> <a href="{% url 'singout'%}" data-toggle="modal" data-target="#myModal5" id="loginButto"><span>Salir <i class="arrow glyphicon glyphicon-chevron-right"></i></span></a>
@@ -218,7 +190,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% endblock contenido %}    
  <section>
 <footer>
-   <p>Last_Fm<a href="#" target="_blank"> Recommender System</a></p>
+   <p>YELP<a href="#" target="_blank"> Recommender System</a></p>
 </footer>
 <script src="static/js/jquery.nicescroll.js"></script>
 <script src="static/js/scripts.js"></script>

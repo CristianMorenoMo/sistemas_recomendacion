@@ -2,14 +2,14 @@
 Base settings to build other settings files upon.
 """
 from pathlib import Path
-
+import os
 import environ
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # last_fm/
 APPS_DIR = ROOT_DIR / "last_fm"
 env = environ.Env()
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
@@ -41,15 +41,11 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'workshop_1',
-            'USER': 'studentrs',
-            'PASSWORD': 'szcWuiyxVnKO38XfzHkP',
-            'HOST': 'workshop1rs.cevhjouwoh1r.us-east-2.rds.amazonaws.com',
-            'PORT': 5432,
-                    }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
 
 # URLS
 # ------------------------------------------------------------------------------
